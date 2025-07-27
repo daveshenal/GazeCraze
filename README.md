@@ -13,3 +13,13 @@
 - 📈 **Real-time Visualization & Display**
 
 ---
+## 📊 Notebooks
+
+Explore the logic and debugging tools via Jupyter notebooks in the `notebooks/` directory:
+
+- [`face_mesh.ipynb`](notebooks/face_mesh.ipynb) – Debug and understand MediaPipe's face mesh outputs.
+- [`eye_indexes.ipynb`](notebooks/eye_indexes.ipynb) – Visualize eye region indices and landmark positions.
+
+These notebooks help visualize facial landmarks and debug model behavior effectively.
+
+---
