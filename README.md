@@ -30,7 +30,7 @@ GazeCraze/
 │       ├── camera_manager.py
 │       └── display_manager.py
 ├── tests/
-│   ├── run_tests.py
+│   ├── run_tests.py # need to be added !!
 │   └── test_*.py # Tests for each module
 ├── utils/
 ├── requirements.txt
