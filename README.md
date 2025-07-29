@@ -4,6 +4,33 @@
 
 ---
 
+## 📂 Project Structure
+
+```
+GazeCraze/
+├── notebooks/
+├── src/ # Source code
+│   ├── main.py # Entry point
+│   ├── concentration_detector.py
+│   └── modules/ # Modular components
+│       ├── face_mesh_processor.py
+│       ├── eye_analyzer.py
+│       ├── head_pose_analyzer.py
+│       ├── concentration_analyzer.py
+│       ├── result_smoother.py
+│       ├── performance_tracker.py
+│       ├── camera_manager.py
+│       └── display_manager.py
+├── tests/
+│   └── test_*.py # Tests for each module
+├── utils/
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## 🚀 Features
 
 - 🔍 **Face Mesh Tracking** via MediaPipe
@@ -13,6 +40,7 @@
 - 📈 **Real-time Visualization & Display**
 
 ---
+
 ## 📊 Notebooks
 
 Explore the logic and debugging tools via Jupyter notebooks in the `notebooks/` directory:
