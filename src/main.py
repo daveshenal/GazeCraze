@@ -1,77 +1,66 @@
+# concentration_detector.py
 import cv2
-import mediapipe as mp
+import logging
 
-# Initialize MediaPipe Face Mesh
-mp_face_mesh = mp.solutions.face_mesh
-face_mesh = mp_face_mesh.FaceMesh(
-    max_num_faces=1,
-    refine_landmarks=True,
-    static_image_mode=False,
-    min_detection_confidence=0.5,
-    min_tracking_confidence=0.5
-)
+from src.concentration_detector import ConcentrationDetector
+from src.modules.camera_manager import CameraManager
+from src.modules.display_manager import DisplayManager
 
-# Indices for key landmarks on the iris and eye corners
-left_iris_index = 468
-left_eye_inner = 133
-left_eye_outer = 33
-left_eye_top = 159
-left_eye_bottom = 145
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-right_iris_index = 473
-right_eye_inner = 362
-right_eye_outer = 263
-right_eye_top = 386
-right_eye_bottom = 374
+def main():
+    """Main function to run the concentration detection system."""
+    try:
+        # Initialize components
+        detector = ConcentrationDetector()
+        camera = CameraManager()
+        display = DisplayManager()
+        
+        frame_width, frame_height = camera.get_dimensions()
+        
+        while True:
+            ret, frame = camera.read_frame()
+            if not ret:
+                logger.warning("Failed to read frame")
+                break
+            
+            # Process frame
+            processed_frame, concentration_status, status_color, confidence = detector.process_frame(frame)
+            
+            # Draw status and info
+            display.draw_status(processed_frame, concentration_status, status_color, confidence)
+            display.draw_info(processed_frame, frame_height)
+            
+            cv2.imshow("Concentration Detection", processed_frame)
+            
+            # Handle key presses
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('q'):
+                break
+            elif key == ord('r'):
+                detector.reset_history()
+        
+    except KeyboardInterrupt:
+        logger.info("Interrupted by user")
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+    finally:
+        # Cleanup
+        if 'camera' in locals():
+            camera.release()
+        cv2.destroyAllWindows()
+        if 'detector' in locals():
+            detector.cleanup()
+        
+        # Print performance stats
+        if 'detector' in locals():
+            stats = detector.get_performance_stats()
+            logger.info(f"Performance: {stats['fps']:.1f} FPS, "
+                       f"{stats['total_frames']} frames, "
+                       f"{stats['runtime']:.1f}s runtime")
 
-# Function to display labeled landmarks
-def display_landmarks(frame, face_landmarks, frame_width, frame_height):
 
-    # Define key points with names
-    key_points = (
-        right_iris_index, # Right Iris Center
-        left_iris_index,  # Left Iris Center
-        right_eye_inner,  # Right Eye Inner
-        right_eye_outer,  # Right Eye Outer
-        left_eye_inner,   # Left Eye Inner
-        left_eye_outer,   # Left Eye Outer
-    )
-    
-    # Draw and label each key point
-    for index in key_points:
-        x = int(face_landmarks.landmark[index].x * frame_width)
-        y = int(face_landmarks.landmark[index].y * frame_height)
-        cv2.circle(frame, (x, y), 3, (0, 255, 255), -1)
-
-# Start video capture
-cap = cv2.VideoCapture(0)
-frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        break
-
-    # Mirror effect for better visualization
-    frame = cv2.flip(frame, 1)
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    results = face_mesh.process(frame_rgb)
-
-    # If landmarks are detected, calculate gaze and head position
-    if results.multi_face_landmarks:
-        for face_landmarks in results.multi_face_landmarks:
-     
-            display_landmarks(frame, face_landmarks, frame_width, frame_height)
-
-    # Show the frame
-    cv2.imshow('Eyeball & Head Pose Detection', frame)
-
-    # Exit on pressing 'q'
-    if cv2.waitKey(5) & 0xFF == ord('q'):
-        break
-
-# Release resources
-cap.release()
-face_mesh.close()
-cv2.destroyAllWindows()
+if __name__ == "__main__":
+    main()
