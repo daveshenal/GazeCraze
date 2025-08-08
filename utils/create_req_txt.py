@@ -7,7 +7,7 @@ required_packages = [
     "numpy",
 ]
 
-# Find installed versions
+# Find installed versions of the required packages
 output_lines = []
 for pkg in required_packages:
     try:
