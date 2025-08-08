@@ -1,0 +1,46 @@
+services:
+  gazecraze:
+    build: .
+    container_name: gazecraze-app
+    volumes:
+      # Mount X11 socket for GUI display
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # Mount the source code for development (optional)
+      - ./src:/app/src:ro
+      - ./notebooks:/app/notebooks:ro
+    devices:
+      # Give access to camera devices
+      - /dev/video0:/dev/video0
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    network_mode: host
+    # Enable access to video devices
+    privileged: true
+    stdin_open: true
+    tty: true
+    # Restart policy
+    restart: unless-stopped
+
+  # Development service with live code reload
+  gazecraze-dev:
+    build: .
+    container_name: gazecraze-dev
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # Mount source for live development
+      - ./src:/app/src
+      - ./notebooks:/app/notebooks
+      - ./tests:/app/tests
+    devices:
+      - /dev/video0:/dev/video0
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: python -m src.main
+    profiles:
+      - dev
