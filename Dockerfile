@@ -52,5 +52,5 @@ USER appuser
 # Expose any ports if needed (not required for this app)
 # EXPOSE 8080
 
-# Default command
+# Default commands
 CMD ["python", "-m", "src.main"]
