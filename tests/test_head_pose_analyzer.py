@@ -29,7 +29,7 @@ class TestHeadPoseAnalyzer(unittest.TestCase):
         })
         
         is_tilted, confidence = self.head_analyzer.check_face_tilt(
-            landmarks, self.frame_width, self.frame_height
+            landmarks, self.frame_height
         )
         
         self.assertFalse(is_tilted)

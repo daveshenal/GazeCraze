@@ -15,7 +15,7 @@ class HeadPoseAnalyzer:
         self.left_iris_index = 468
         self.right_iris_index = 473
     
-    def check_face_tilt(self, face_landmarks, frame_width: int, frame_height: int) -> Tuple[bool, float]:
+    def check_face_tilt(self, face_landmarks, frame_height: int) -> Tuple[bool, float]:
         """Check if face is tilted beyond threshold."""
         left_eye_y = face_landmarks.landmark[self.left_eye_outer].y * frame_height
         right_eye_y = face_landmarks.landmark[self.right_eye_outer].y * frame_height

@@ -49,7 +49,7 @@ class ConcentrationDetector:
                 return False, "Eyes Closed", 0.0
             
             # Check face tilt
-            is_tilted, tilt_confidence = self.head_analyzer.check_face_tilt(face_landmarks, frame_width, frame_height)
+            is_tilted, tilt_confidence = self.head_analyzer.check_face_tilt(face_landmarks, frame_height)
             if is_tilted:
                 return False, "Face Tilted", tilt_confidence
             
