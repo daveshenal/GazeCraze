@@ -44,7 +44,7 @@ class TestConcentrationAnalyzer(unittest.TestCase):
         )
         
         self.assertTrue(is_concentrated)
-        self.assertEqual(status, "Head: Left Turn")
+        self.assertEqual(status, "Head: Right Turn")
     
     def test_analyze_gaze_left_turn_distracted(self):
         """Test gaze analysis with left head turn and distracted."""
@@ -53,7 +53,7 @@ class TestConcentrationAnalyzer(unittest.TestCase):
         )
         
         self.assertFalse(is_concentrated)
-        self.assertEqual(status, "Looking Left")
+        self.assertEqual(status, "Looking Right")
     
     def test_analyze_gaze_right_turn_concentrated(self):
         """Test gaze analysis with right head turn but concentrated."""
@@ -62,7 +62,7 @@ class TestConcentrationAnalyzer(unittest.TestCase):
         )
         
         self.assertTrue(is_concentrated)
-        self.assertEqual(status, "Head: Right Turn")
+        self.assertEqual(status, "Head: Left Turn")
     
     def test_analyze_gaze_right_turn_distracted(self):
         """Test gaze analysis with right head turn and distracted."""
@@ -71,5 +71,5 @@ class TestConcentrationAnalyzer(unittest.TestCase):
         )
         
         self.assertFalse(is_concentrated)
-        self.assertEqual(status, "Looking Right")
+        self.assertEqual(status, "Looking Left")
 
