@@ -1,4 +1,4 @@
-# 🧠 GazeCraze - Real-Time Concentration Detection Using Face Landmarks
+# GazeCraze: Real-Time Concentration Detection Using Face Landmarks
 
 **GazeCraze** is a modular Python application that uses computer vision and facial landmark detection to analyze user concentration in real time. It leverages MediaPipe Face Mesh, OpenCV, and head/eye tracking techniques to infer gaze alignment and focus level from a webcam feed, or from image and video files.
 
@@ -141,6 +141,7 @@ GazeCraze/
 ├── utils/
 ├── requirements.txt
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
