@@ -18,7 +18,7 @@ class ConcentrationDetector:
     def __init__(self, 
                  detection_confidence: float = 0.7, 
                  tracking_confidence: float = 0.7,
-                 face_tilt_threshold: float = 15,
+                 face_tilt_threshold: float = 50,
                  head_pose_threshold: float = 0.028,
                  gaze_ratio_threshold: float = 0.55,
                  iris_alignment_threshold: float = 0.14,
