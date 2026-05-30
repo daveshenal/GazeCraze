@@ -114,6 +114,8 @@ Labeled examples below were generated with [`src/process_media.py`](src/process_
   </tr>
 </table>
 
+> 📷 Sample images sourced from [Unsplash](https://unsplash.com/) for demonstration purposes only. Not used for model training.
+
 ## 📂 Project Structure
 
 ```
