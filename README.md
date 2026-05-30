@@ -2,6 +2,89 @@
 
 **GazeCraze** is a modular Python application that uses computer vision and facial landmark detection to analyze user concentration in real-time. It leverages MediaPipe Face Mesh, OpenCV, and head/eye tracking techniques to infer gaze alignment and focus level from webcam video streams.
 
+## 📸 Sample Dataset
+
+<table>
+  <tr>
+    <th colspan="2">✅ Concentrated - Eyes on screen</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_eyes_on_screen_1_labeled.jpg" width="100%" style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_eyes_on_screen_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">✅ Concentrated - Head Left Turn</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_head_left_turn_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_head_left_turn_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">✅ Concentrated - Head Right Turn</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_head_right_turn_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/concentrated_head_right_turn_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Eyes on left</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_on_left_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_on_left_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Eyes on right</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_on_right_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_on_right_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Looking Left</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_looking_left_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_looking_left_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Looking Right</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_looking_right_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_looking_right_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Eyes Closed</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_closed_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_eyes_closed_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">❌ Not Concentrated - Face Tilted</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_face_tilted_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/not_concentrated_face_tilted_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+
+  <tr>
+    <th colspan="2">🚫 No Face Detected</th>
+  </tr>
+  <tr>
+    <td width="50%"><img src="dataset/image_samples_labeled/no_face_detected_1_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+    <td width="50%"><img src="dataset/image_samples_labeled/no_face_detected_2_labeled.jpg" width="100%"  style="object-fit: cover;"/></td>
+  </tr>
+</table>
 
 ## 🚀 Features
 
@@ -10,7 +93,6 @@
 - 🧠 **Head Pose Analysis** to determine attention direction
 - 🧪 **Modular Testable Architecture**
 - 📈 **Real-time Visualization & Display**
-
 
 ## 📂 Project Structure
 
@@ -37,7 +119,6 @@ GazeCraze/
 ├── .gitignore
 └── README.md
 ```
-
 
 ## 🛠️ Installation
 
@@ -70,8 +151,6 @@ python -m src.main
 
 Make sure your webcam is connected. A window will open showing real-time concentration detection based on face and gaze tracking.
 
-
-
 ## 📊 Notebooks
 
 Explore the logic and debugging tools via Jupyter notebooks in the `notebooks/` directory:
@@ -81,7 +160,6 @@ Explore the logic and debugging tools via Jupyter notebooks in the `notebooks/` 
 
 These notebooks help visualize facial landmarks and debug model behavior effectively.
 
-
 ## 👤 Author
 
 **Dave Perera**  
@@ -89,7 +167,6 @@ _Machine Learning Engineer_
 
 - [🔗 LinkedIn](https://www.linkedin.com/in/davesperera)
 - [🔗 Email](daveshenal281@gmail.com)
-
 
 ## 🙏 Acknowledgements
 
